@@ -1,0 +1,68 @@
+body {
+
+}
+
+.container {
+
+	border: 1px solid red;
+	margin: 10px auto;
+	position: relative;
+	top: 150px;
+}
+
+#timer, #score {
+	border: 1px solid black;
+}
+
+#cat {
+
+	left: 0;
+	top: 0;
+	position:relative;
+}
+
+#message {
+	margin: 10px auto;
+	text-align: justify;
+
+}
+
+#word {
+	margin: 10px auto;
+}
+
+#input {
+	margin: 10px auto;
+}
+
+#timer-word, #score-word {
+	text-align: left;
+	padding: 0px;
+}
+
+p {
+
+	font-weight: 700;
+}
+
+
+
+img {
+	position: absolute;
+	left: 0;
+	top: 0;
+	transform: scaleX(-1);
+	width: 100px;
+}
+
+.heart {
+	width: 30px;
+}
+
+.col-4 {
+	padding: 0px;
+}
+
+#lives {
+	margin: 20px auto;
+}
