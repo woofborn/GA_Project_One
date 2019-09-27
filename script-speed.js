@@ -28,6 +28,7 @@ function displayWord(array){
 document.getElementById("input").addEventListener("keypress", function(){
                 input = event.target.value;
                 if (event.key === "Enter"){
+                countDown();
                 checkMatch();
                 displayWord(easyWords);//easy words for testing
 
@@ -53,7 +54,7 @@ function keepScore(){
 
 }
 
-//this is the countdown
+//this is the countdown timer
 function countDown(){
     let i=30
     var interval =
@@ -70,5 +71,3 @@ function countDown(){
 
 
 }
-
-countDown();
