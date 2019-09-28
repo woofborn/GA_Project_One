@@ -27,6 +27,7 @@ function homeScreen(){
     var backgroundDiv = document.createElement("div")
 
     backgroundDiv.style.backgroundImage = `url("images/backgroundblur.jpg")`
+    backgroundDiv.setAttribute("class", "col-12 d-flex justify-content-center")
     backgroundDiv.style.height = "100vh"
 
     home.appendChild(backgroundDiv)
@@ -35,11 +36,33 @@ function homeScreen(){
 
     var messageSpan = document.createElement("span")
     messageSpan.setAttribute("id", "message")
-
-    messageSpan.setAttribute("class", "col-6")
+    messageSpan.setAttribute("class", "col-12 d-flex justify-content-center")
+    messageSpan.style.textAlign = "center"
+    messageSpan.style.color = "white"
+    messageSpan.style.fontWeight = "bold"
+    messageSpan.style.fontSize = "10em"
+    messageSpan.style.marginTop = "20px"
     messageSpan.innerText = "Welcome to TypeQuest!"
 
     backgroundDiv.appendChild(messageSpan)
+
+//creates button div
+    var buttonDiv = document.createElement("div")
+    buttonDiv.setAttribute("class", "col-8 d-flex justify-content-center")
+    messageSpan.appendChild(buttonDiv)
+
+//creates Story button
+    var buttonOne = document.createElement("button");
+    buttonOne.innerText = "Story Mode"
+    buttonOne.setAttribute("class", "col-6 btn btn-outline-light btn-lg")
+    buttonDiv.appendChild(buttonOne)
+
+//creates Speed button
+    var buttonTwo = document.createElement("button");
+    buttonTwo.innerText = "Speed Mode"
+    buttonTwo.setAttribute("class", "col-6 btn btn-outline-light btn-lg")
+    buttonDiv.appendChild(buttonTwo)
+
 }
 homeScreen()
 
