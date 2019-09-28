@@ -1,9 +1,10 @@
 body {
 width:100%;
+background-color: grey;
 }
 
 #maincontainer {
-	display:none;
+	/*display:none;*/
 	border: 1px solid red;
 	margin: 10px auto;
 	position: relative;
