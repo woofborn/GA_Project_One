@@ -14,6 +14,25 @@ var hardWords = []; // 13-15 letters
 var bonusWords = ["antidisestablishmentarianism", "floccinaucinihilipilification", "psychophysicotherapeutics", "radioimmunoelectrophoresis", "pneumoencephalographically", "otorhinolaryngological", "thyroparathyroidectomized", "psychoneuroendocrinological", "hepaticocholangiogastrostomy", "pseudopseudohypoparathyroidism" ]; //above 20 letters
 //NOTE TO SELF: create different word arrays for story mode, concatenate arrays for speed mote!
 
+function homeScreen(){
+    document.getElementById("maincontainer").style.display = "none"
+
+    var body = document.querySelector("body")
+    var home = document.createElement("div")
+    home.setAttribute("id", "homepage")
+    home.style.width = "100%"
+    body.appendChild(home)
+
+    var homeBackground = document.createElement("img")
+    homeBackground.setAttribute("src", "images/backgroundblur.jpg")
+    homeBackground.setAttribute("width", "100%")
+
+    home.appendChild(homeBackground)
+}
+homeScreen()
+
+
+
 
 //this function randomly selects word and displays the random word
 function displayWord(array){
@@ -50,6 +69,7 @@ function checkMatch(){
            document.getElementById("number").innerText = score
            document.getElementById("checkmark").setAttribute("src", "images/checkmark.png")
            moveCat();
+           moveBar();
 
     } else if (input !== word && enterPress !== 1) {
        lives-- // consider hiding lives for speed mode
@@ -87,4 +107,18 @@ function gameOver(){
 function moveCat(){
     var movement = score * 10
     document.getElementById("cat").style.left = `${movement}%`
+}
+
+function moveBar() {
+    var progressBar = document.getElementById("myBar");
+    var width;
+
+    if (score >= 1){
+    width = score * 10;
+    progressBar.style.width = `${width}%`;
+    progressBar.innerHTML = `${width}%`;
+    } else if (score > 10){
+        width = 0
+    }
+
 }
