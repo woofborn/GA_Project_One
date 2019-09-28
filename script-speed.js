@@ -6,14 +6,13 @@ var score = 0;
 var lives = 3;
 var youWin = false;
 var enterPress = 0;
-let i=5
+let i=10
 //each array will have 30 words (except for insane)
 var easyWords = ["cat", "dog", "rat", "pen", "whale"]; //5-6 letters
 var mediumWords = []; //9-10 letters
 var hardWords = []; // 13-15 letters
 var bonusWords = ["antidisestablishmentarianism", "floccinaucinihilipilification", "psychophysicotherapeutics", "radioimmunoelectrophoresis", "pneumoencephalographically", "otorhinolaryngological", "thyroparathyroidectomized", "psychoneuroendocrinological", "hepaticocholangiogastrostomy", "pseudopseudohypoparathyroidism" ]; //above 20 letters
-
-var wordInputs = [];
+//NOTE TO SELF: create different word arrays for story mode, concatenate arrays for speed mote!
 
 
 //this function randomly selects word and displays the random word
@@ -22,7 +21,6 @@ function displayWord(array){
     word = array[Math.floor(Math.random() * array.length)];
     var display = document.getElementById("display");
     display.innerText = word;
-
 }
 
 function initiateCount(){
@@ -42,7 +40,6 @@ document.getElementById("input").addEventListener("keypress", function(){
                 document.getElementById("inputbox").value = ""
                 setTimeout(gameOver,1000)
                 }
-
             })
 
 
@@ -52,11 +49,11 @@ function checkMatch(){
         score++
            document.getElementById("number").innerText = score
            document.getElementById("checkmark").setAttribute("src", "images/checkmark.png")
-
+           moveCat();
 
     } else if (input !== word && enterPress !== 1) {
        lives-- // consider hiding lives for speed mode
-       document.getElementById("checkmark").setAttribute("src", "images/crossout.jpg")
+       document.getElementById("checkmark").setAttribute("src", "images/crossout.png")
     }
 }
 
@@ -85,4 +82,9 @@ function gameOver(){
         if (i === 0){
         alert("GAME OVER")
     }
+}
+
+function moveCat(){
+    var movement = score * 10
+    document.getElementById("cat").style.left = `${movement}%`
 }
