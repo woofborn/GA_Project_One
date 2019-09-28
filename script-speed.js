@@ -17,19 +17,32 @@ var bonusWords = ["antidisestablishmentarianism", "floccinaucinihilipilification
 function homeScreen(){
     document.getElementById("maincontainer").style.display = "none"
 
+//creates main containing div
     var body = document.querySelector("body")
     var home = document.createElement("div")
     home.setAttribute("id", "homepage")
-    home.style.width = "100%"
     body.appendChild(home)
+//creates image background
 
-    var homeBackground = document.createElement("img")
-    homeBackground.setAttribute("src", "images/backgroundblur.jpg")
-    homeBackground.setAttribute("width", "100%")
+    var backgroundDiv = document.createElement("div")
 
-    home.appendChild(homeBackground)
+    backgroundDiv.style.backgroundImage = `url("images/backgroundblur.jpg")`
+    backgroundDiv.style.height = "100vh"
+
+    home.appendChild(backgroundDiv)
+
+//creates welcome message
+
+    var messageSpan = document.createElement("span")
+    messageSpan.setAttribute("id", "message")
+
+    messageSpan.setAttribute("class", "col-6")
+    messageSpan.innerText = "Welcome to TypeQuest!"
+
+    backgroundDiv.appendChild(messageSpan)
 }
 homeScreen()
+
 
 
 
