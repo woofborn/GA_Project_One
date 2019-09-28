@@ -6,7 +6,7 @@ var score = 0;
 var lives = 3;
 var youWin = false;
 var enterPress = 0;
-let i=10
+let timer=10
 //each array will have 30 words (except for insane)
 var easyWords = ["cat", "dog", "rat", "pen", "whale"]; //5-6 letters
 var mediumWords = []; //9-10 letters
@@ -15,7 +15,6 @@ var bonusWords = ["antidisestablishmentarianism", "floccinaucinihilipilification
 //NOTE TO SELF: create different word arrays for story mode, concatenate arrays for speed mote!
 
 function homeScreen(){
-    document.getElementById("maincontainer").style.display = "none"
 
 //creates main containing div
     var body = document.querySelector("body")
@@ -35,16 +34,11 @@ function homeScreen(){
 //creates welcome message
 
     var messageSpan = document.createElement("span")
-    messageSpan.setAttribute("id", "message")
+    messageSpan.setAttribute("id", "homemessage")
     messageSpan.setAttribute("class", "col-12 d-flex justify-content-center")
-    messageSpan.style.textAlign = "center"
-    messageSpan.style.color = "white"
-    messageSpan.style.fontWeight = "bold"
-    messageSpan.style.fontSize = "10em"
-    messageSpan.style.marginTop = "20px"
     messageSpan.innerText = "Welcome to TypeQuest!"
-
     backgroundDiv.appendChild(messageSpan)
+    // typeWriter()
 
 //creates button div
     var buttonDiv = document.createElement("div")
@@ -61,21 +55,38 @@ function homeScreen(){
     var buttonTwo = document.createElement("button");
     buttonTwo.innerText = "Speed Mode"
     buttonTwo.setAttribute("class", "col-6 btn btn-outline-light btn-lg")
+    buttonTwo.setAttribute("id", "button-two")
     buttonDiv.appendChild(buttonTwo)
+    document.getElementById("button-two").addEventListener("click", function(){
+    document.getElementById("maincontainer").style.display = "initial"
+    document.getElementById("homepage").style.display = "none"
+    })
 
 }
 homeScreen()
 
+// function typeWriter(){
+//          var i = 0
+//          var welcomeText = "Welcome to TypeQuest!"
 
+//              if (i < welcomeText.length){
+//                 document.getElementById("homemessage").innerText += welcomeText.charAt(i);
+//                 i++
+//                 setTimeout(typeWriter, 30)
+//             }
+//         }
 
-
-
-//this function randomly selects word and displays the random word
+//this function randomly selects word and displays the random word - for speed mode
 function displayWord(array){
 
     word = array[Math.floor(Math.random() * array.length)];
     var display = document.getElementById("display");
     display.innerText = word;
+}
+
+//this function shuffles arrays - for story mode
+function shuffleAray(array){
+
 }
 
 function initiateCount(){
@@ -123,19 +134,19 @@ function keepScore(){
 function countDown(){
     var interval =
     setInterval(function(){
-                    document.getElementById("seconds").innerText = i;
-                    if (i<=5){
+                    document.getElementById("seconds").innerText = timer;
+                    if (timer<=5){
                     document.getElementById("seconds").style.color = "red"
                     }
-                        if (i === 0){
+                        if (timer === 0){
                         clearInterval(interval)
                         }
-                     i--;
+                     timer--;
                     },1000);
 }
 
 function gameOver(){
-        if (i === 0){
+        if (timer === 0){
         alert("GAME OVER")
     }
 }

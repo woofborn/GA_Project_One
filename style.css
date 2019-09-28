@@ -2,8 +2,8 @@ body {
 width:100%;
 }
 
-.container {
-
+#maincontainer {
+	display:none;
 	border: 1px solid red;
 	margin: 10px auto;
 	position: relative;
@@ -47,7 +47,14 @@ p {
 	font-weight: 700;
 }
 
-
+#homemessage{
+	color: white;
+	text-align: center;
+	font-family: monospace;
+	font-weight: bold;
+	font-size: 3em;
+	margin: 0 auto;
+}
 
 img {
 
