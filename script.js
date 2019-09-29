@@ -7,7 +7,7 @@ var lives = 6;
 var youWin = false;
 var enterPress = 0;
 var timer=10;
-var storyTracker = 0;
+var storyTracker = 11;
 //each array will have 30 words (except for insane)
 var easyWords = ["cat", "dog", "rat", "pen", "whale"]; //5-6 letters
 var mediumWords = []; //9-10 letters
@@ -54,7 +54,62 @@ function homeScreen(){
     document.getElementById("homepage").style.display = "none"
     })
 }
-// homeScreen()
+
+function gameEndScreen(){
+document.getElementById("maincontainer").style.display = "none"
+//creates main containing div
+    var body = document.querySelector("body")
+    var end = document.createElement("div")
+    end.setAttribute("id", "endpage")
+    body.appendChild(end)
+//creates background color
+    var backgroundDiv = document.createElement("div")
+    backgroundDiv.setAttribute("class", "col-12 d-flex justify-content-center")
+    backgroundDiv.style.height = "100vh"
+    end.appendChild(backgroundDiv)
+    if (youWin === false){
+        backgroundDiv.style.backgroundColor = "black"
+    } else {
+        backgroundDiv.style.backgroundColor = "red"
+
+    }
+//creates welcome message
+    var messageSpan = document.createElement("span")
+    messageSpan.setAttribute("id", "endmessage")
+    messageSpan.setAttribute("class", "col-12 d-flex justify-content-center")
+        if (youWin === false){
+            messageSpan.innerText = `GAME OVER
+                                    Would you like to play again?`
+        } else {
+            messageSpan.innerText = `You beat PeasantTypeQuest! Your score was: ${score}!
+                                    Would you like to play again?`
+        }
+    backgroundDiv.appendChild(messageSpan)
+//creates button div
+    var buttonDiv = document.createElement("div")
+    buttonDiv.setAttribute("class", "col-8 d-flex justify-content-center")
+    messageSpan.appendChild(buttonDiv)
+//creates Yes button
+    var buttonOne = document.createElement("button");
+    buttonOne.innerText = "HECK YES"
+    buttonOne.setAttribute("class", "col-6 btn btn-outline-light btn-lg")
+    buttonOne.setAttribute("id", "button-yes")
+    buttonDiv.appendChild(buttonOne)
+    document.getElementById("button-yes").addEventListener("click", function(){
+    document.getElementById("homepage").style.display = "initial"
+    document.getElementById("endpage").style.display = "none"
+    })
+//creates No button
+    var buttonTwo = document.createElement("button");
+    buttonTwo.innerText = "absolutely NOT"
+    buttonTwo.setAttribute("class", "col-6 btn btn-outline-light btn-lg")
+    buttonTwo.setAttribute("id", "button-no")
+    buttonDiv.appendChild(buttonTwo)
+    document.getElementById("button-no").addEventListener("click", function(){
+    window.location = "http://www.nyan.cat/"
+    })
+}
+
 
 // function typeWriter(){
 //          var i = 0
@@ -125,12 +180,17 @@ function gameMode(){
                 console.log(enterPress)
                 document.getElementById("inputbox").value = ""
 
-                if (enterPress%3 === 0){
+                if (enterPress%3 === 0 && storyTracker < 12){
                 storyTracker++
                 i = 0
                 shuffle(peasantQuest[storyTracker]["array"])
 
-        }
+                    if (storyTracker === 12){ // add in between whether game won or lost
+                    gameEndScreen();
+                    }
+                }
+
+
             }
         })
 }
@@ -148,11 +208,14 @@ function checkMatchStory(){
 
     } else if (input !== word) {
        document.getElementById("checkmark").setAttribute("src", "images/crossout.png")
-
-       var lifeBar = document.querySelector("#lifebar")
-       var life = document.querySelector(`#life${lives}`)
-       lifeBar.removeChild(life)
-       lives--
+       if (lives < 0){
+           var lifeBar = document.querySelector("#lifebar")
+           var life = document.querySelector(`#life${lives}`)
+           lifeBar.removeChild(life)
+           lives--
+        } else {
+            gameEndScreen()
+        }
     }
 }
 
