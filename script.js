@@ -59,11 +59,9 @@ function homeScreen(){
     document.getElementById("button-two").addEventListener("click", function(){
     document.getElementById("maincontainer").style.display = "initial"
     document.getElementById("homepage").style.display = "none"
+    speedMode()
     })
 }
-
-
-
 
 function gameEndScreen(){
 document.getElementById("maincontainer").style.display = "none"
@@ -83,12 +81,13 @@ document.getElementById("maincontainer").style.display = "none"
         backgroundDiv.style.backgroundColor = "red"
 
     }
-//creates welcome message
+//creates game ended message
     var messageSpan = document.createElement("span")
     messageSpan.setAttribute("id", "endmessage")
     messageSpan.setAttribute("class", "col-12 d-flex justify-content-center")
         if (youWin === false){
             messageSpan.innerText = `GAME OVER
+                                    Your score was: ${score}.
                                     Would you like to play again?`
         } else {
             messageSpan.innerText = `You beat PeasantTypeQuest! Your score was: ${score}!
@@ -108,6 +107,8 @@ document.getElementById("maincontainer").style.display = "none"
     document.getElementById("button-yes").addEventListener("click", function(){
         document.getElementById("endpage").style.display = "none"
         document.getElementById("homepage").style.display = "initial"
+        storyTracker = 0
+        enterPress = 1
     })
 //creates No button
     var buttonTwo = document.createElement("button");
@@ -148,19 +149,15 @@ function displayShuffledArray(array){
     i++
     console.log(word + "first")
      console.log(i + "first")
-
 }
-
 
 //first story displayed
 function displayMessage(){
     document.getElementById("message").innerText = peasantQuest[storyTracker]["message"]
 }
 
-
 enterPress = 1
 var i = 1
-
 
 function gameMode(){
     displayMessage()
@@ -200,14 +197,9 @@ function gameMode(){
                     youWin = true // add in between whether game won or lost
                     gameEndScreen();
                 }
-
-
             }
         })
 }
-gameMode();
-
-
 
 function checkMatchStory(){
     if (input === word){
@@ -231,11 +223,11 @@ function checkMatchStory(){
 }
 
 
-
-//SPEED MODE
+////////////////////////SPEED MODE////////////////////
+var enterPressSpeed = 0
 //initiate timer for speed mode
 function initiateCount(){
-     if (enterPress === 1){
+     if (enterPressSpeed === 1){
         countDown();
      }
 }
@@ -252,30 +244,31 @@ function speedMode(){
         .addEventListener("keypress", function(){
         input = event.target.value;
             if (event.key === "Enter"){
-            enterPress ++
+            enterPressSpeed ++
             initiateCount();
             checkMatchSpeed();
             displayWord(easyWords);//easy words for testing
 
             document.getElementById("inputbox").value = ""
-            setTimeout(gameOver,1000)
+            setTimeout(gameOverSpeed,1000)
             }
         })
 }
 
 //this function will check if user input matches generated word
 function checkMatchSpeed(){
-    if (input === word && enterPress !== 1){
+    if (input === word && enterPressSpeed !== 1){
         score++
            document.getElementById("number").innerText = score
            document.getElementById("checkmark").setAttribute("src", "images/checkmark.png")
            moveCat();
            // moveBar();
 
-    } else if (input !== word && enterPress !== 1) {
+    } else if (input !== word && enterPressSpeed !== 1) {
        lives-- // consider hiding lives for speed mode
        document.getElementById("checkmark").setAttribute("src", "images/crossout.png")
     }
+    gameOverSpeed()
 }
 
 
@@ -294,9 +287,11 @@ function countDown(){
                     },1000);
 }
 
-function gameOver(){
+function gameOverSpeed(){
         if (timer === 0){
-        alert("GAME OVER")
+        gameEndScreen()
+        score = 0
+        timer = 10
     }
 }
 
