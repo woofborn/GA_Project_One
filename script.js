@@ -6,7 +6,7 @@ var score = 0;
 var lives = 6;
 var youWin = false;
 var enterPress = 0;
-var timer=10;
+var timer=5;
 var storyTracker = 0;
 //each array will have 30 words (except for insane)
 var easyWords = ["cat", "dog", "rat", "pen", "whale"]; //5-6 letters
@@ -85,7 +85,7 @@ document.getElementById("maincontainer").style.display = "none"
     } else {
 
          document.querySelector("body").style.backgroundImage = `url("images/fire.jpg")`
-                 document.querySelector("body").style.backgroundSize = "cover"
+         document.querySelector("body").style.backgroundSize = "cover"
 
     }
 //creates game ended message
@@ -97,7 +97,7 @@ document.getElementById("maincontainer").style.display = "none"
                                     Your score was: ${score}.
                                     Would you like to play again?`
         } else {
-            messageSpan.innerText = `You beat PeasantTypeQuest! Your score was: ${score}!
+            messageSpan.innerText = `You beat TypeQuest! Your score was: ${score}!
                                     Would you like to play again?`
         }
     backgroundDiv.appendChild(messageSpan)
@@ -112,10 +112,7 @@ document.getElementById("maincontainer").style.display = "none"
     buttonOne.setAttribute("id", "button-yes")
     buttonDiv.appendChild(buttonOne)
     document.getElementById("button-yes").addEventListener("click", function(){
-        document.getElementById("endpage").style.display = "none"
-        document.getElementById("homepage").style.display = "initial"
-        storyTracker = 0
-        enterPress = 1
+        window.location.reload()
     })
 //creates No button
     var buttonTwo = document.createElement("button");
@@ -271,6 +268,16 @@ function displayWord(array){
 }
 
 function speedMode(){
+    var audioTheme = document.createElement("audio")
+    audioTheme.setAttribute("id", "speedTheme")
+    document.getElementById("maincontainer").appendChild(audioTheme)
+    var theme = document.createElement("source")
+    theme.setAttribute("src", "ThemeA.mp3")
+    audioTheme.appendChild(theme)
+    // audioTheme.play()
+
+    document.querySelector("body").style.backgroundImage = `url("images/clocks.jpg")`
+    document.querySelector("body").style.backgroundSize = "cover"
     document.getElementById("input")
         .addEventListener("keypress", function(){
         input = event.target.value;
@@ -281,7 +288,8 @@ function speedMode(){
             displayWord(easyWords);//easy words for testing
 
             document.getElementById("inputbox").value = ""
-            setTimeout(gameOverSpeed,1000)
+
+
             }
         })
 }
@@ -299,30 +307,35 @@ function checkMatchSpeed(){
        lives-- // consider hiding lives for speed mode
        document.getElementById("checkmark").setAttribute("src", "images/crossout.png")
     }
-    gameOverSpeed()
+
 }
 
 
 //this is the countdown timer function
 function countDown(){
+
     var interval =
     setInterval(function(){
                     document.getElementById("seconds").innerText = timer;
+                    timer--
                     if (timer<=5){
                     document.getElementById("seconds").style.color = "red"
                     }
-                        if (timer === 0){
+
+                    if (timer === 0){
                         clearInterval(interval)
+                        setTimeout(gameOverSpeed,1000)
                         }
-                     timer--;
+                     ;
                     },1000);
 }
 
 function gameOverSpeed(){
         if (timer === 0){
         gameEndScreen()
-        score = 0
-        timer = 10
+        var audioTheme = document.getElementById("speedTheme")
+        audioTheme.pause()
+
     }
 }
 
