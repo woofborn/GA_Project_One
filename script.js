@@ -115,7 +115,8 @@ document.getElementById("maincontainer").style.display = "none"
     })
 //creates No button
     var buttonTwo = document.createElement("button");
-    buttonTwo.innerText = "absolutely NOT"
+    buttonTwo.innerText = `absolutely
+                            NOT`
     buttonTwo.setAttribute("class", "col-6 btn btn-outline-light btn-lg")
     buttonTwo.setAttribute("id", "button-no")
     buttonDiv.appendChild(buttonTwo)
@@ -210,10 +211,10 @@ function gameMode(){
                 shuffle(peasantQuest[storyTracker]["array"])
                 }
 
-                if (storyTracker === 5){
+                if (enterPress === 13){
                 document.querySelector("body").style.backgroundImage = `url("images/forest.jpg")`
                  document.querySelector("body").style.backgroundSize = "cover"
-                } else if (storyTracker === 8){
+                } else if (enterPress === 25){
                      document.querySelector("body").style.backgroundImage = `url("images/moat.jpeg")`
                  document.querySelector("body").style.backgroundSize = "cover"
                 }
