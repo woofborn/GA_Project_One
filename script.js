@@ -3,7 +3,7 @@ console.log("OMG PROJECT")
 var word;
 var input;
 var score = 0;
-var lives = 3;
+var lives = 6;
 var youWin = false;
 var enterPress = 0;
 var timer=10;
@@ -147,8 +147,12 @@ function checkMatchStory(){
            // moveBar();
 
     } else if (input !== word) {
-       lives-- // consider hiding lives for speed mode
        document.getElementById("checkmark").setAttribute("src", "images/crossout.png")
+
+       var lifeBar = document.querySelector("#lifebar")
+       var life = document.querySelector(`#life${lives}`)
+       lifeBar.removeChild(life)
+       lives--
     }
 }
 
