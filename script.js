@@ -267,6 +267,14 @@ function displayWord(array){
     display.innerText = word;
 }
 
+// function timerLength(){
+//     document.getElementById("timer-input").addEventListener("keypress", function(){
+//         if (event.key === "Enter"){
+//             timer = event.target.value
+//         }
+//     })
+// }
+
 function speedMode(){
     var audioTheme = document.createElement("audio")
     audioTheme.setAttribute("id", "speedTheme")
@@ -274,9 +282,17 @@ function speedMode(){
     var theme = document.createElement("source")
     theme.setAttribute("src", "ThemeA.mp3")
     audioTheme.appendChild(theme)
-    audioTheme.play()
+    // audioTheme.play()
+
+    document.getElementById("lives").style.visibility = "hidden"
 
     concatArray();
+
+    var timerInput = document.getElementById("timer-input");
+    timerInput.onchange = function(){
+        timer = timerInput.value;
+    }
+
 
     document.querySelector("body").style.backgroundImage = `url("images/clocks.jpg")`
     document.querySelector("body").style.backgroundSize = "cover"
