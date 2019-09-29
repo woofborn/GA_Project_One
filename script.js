@@ -65,6 +65,8 @@ function homeScreen(){
 
 function gameEndScreen(){
 document.getElementById("maincontainer").style.display = "none"
+var audioTheme = document.getElementById("storyTheme")
+audioTheme.pause()
 //creates main containing div
     var body = document.querySelector("body")
     var end = document.createElement("div")
@@ -163,6 +165,15 @@ function gameMode(){
     displayMessage()
     shuffle(peasantQuest[storyTracker]["array"])
     displayShuffledArray();
+
+    var audioTheme = document.createElement("audio")
+    audioTheme.setAttribute("id", "storyTheme")
+    document.getElementById("maincontainer").appendChild(audioTheme)
+    var theme = document.createElement("source")
+    theme.setAttribute("src", "terra-theme.mp3")
+    audioTheme.appendChild(theme)
+
+    audioTheme.play();
 
     document.getElementById("input")
         .addEventListener("keypress", function(){
