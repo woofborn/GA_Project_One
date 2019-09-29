@@ -7,7 +7,7 @@ var lives = 6;
 var youWin = false;
 var enterPress = 0;
 var timer=10;
-var storyTracker = 11;
+var storyTracker = 0;
 //each array will have 30 words (except for insane)
 var easyWords = ["cat", "dog", "rat", "pen", "whale"]; //5-6 letters
 var mediumWords = []; //9-10 letters
@@ -158,7 +158,6 @@ function gameMode(){
     displayMessage()
     shuffle(peasantQuest[storyTracker]["array"])
     displayShuffledArray();
-    console.log(peasantQuest[storyTracker]["array"])
 
     document.getElementById("input")
         .addEventListener("keypress", function(){
@@ -173,23 +172,25 @@ function gameMode(){
                 i++
 
                 console.log(i + "second")
-                console.log(peasantQuest[storyTracker]["array"])
+
                 console.log(word + "second")
 
                 displayMessage();
 
                 enterPress = enterPress+1
-                console.log(enterPress)
+                console.log("enter times:" + enterPress)
                 document.getElementById("inputbox").value = ""
 
                 if (enterPress%3 === 0 && storyTracker < 11){
                 storyTracker++
+                console.log("story tracker:" + storyTracker)
                 i = 0
                 shuffle(peasantQuest[storyTracker]["array"])
                 }
 
-                if (storyTracker === 11){ // add in between whether game won or lost
-                gameEndScreen();
+                if (enterPress === 37){
+                    youWin = true // add in between whether game won or lost
+                    gameEndScreen();
                 }
 
 
@@ -210,14 +211,14 @@ function checkMatchStory(){
 
     } else if (input !== word) {
        document.getElementById("checkmark").setAttribute("src", "images/crossout.png")
-       if (lives > 0){
-           var lifeBar = document.querySelector("#lifebar")
-           var life = document.querySelector(`#life${lives}`)
-           lifeBar.removeChild(life)
-           lives--
-        } else {
-            gameEndScreen()
-        }
+       // if (lives > 0){
+       //     var lifeBar = document.querySelector("#lifebar")
+       //     var life = document.querySelector(`#life${lives}`)
+       //     lifeBar.removeChild(life)
+       //     lives--
+       //  } else if (lives === 0) {
+       //      gameEndScreen()
+       //  }
     }
 }
 
