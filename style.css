@@ -27,15 +27,21 @@ background-color: grey;
 #message {
 	margin: 10px auto;
 	text-align: justify;
+	background-color: rgba(255, 255, 255, 0.5);
 
 }
 
 #word {
 	margin: 10px auto;
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
 #input {
 	margin: 10px auto;
+}
+
+#timer, #score {
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
 #timer-word, #score-word {
@@ -49,7 +55,7 @@ p {
 }
 
 #homemessage{
-	color: white;
+	color: black;
 	text-align: center;
 	font-family: monospace;
 	font-weight: bold;
@@ -88,5 +94,6 @@ img {
 }
 
 button{
-	font-size: 5em;
+	font-size: 10em;
+	color: black;
 }

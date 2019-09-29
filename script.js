@@ -25,7 +25,8 @@ function homeScreen(){
     body.appendChild(home)
 //creates image background
     var backgroundDiv = document.createElement("div")
-    backgroundDiv.style.backgroundImage = `url("images/backgroundblur.jpg")`
+    backgroundDiv.style.backgroundImage = `url("images/greywall.jpg")`
+
     backgroundDiv.setAttribute("class", "col-12 d-flex justify-content-center")
     backgroundDiv.style.height = "100vh"
     home.appendChild(backgroundDiv)
@@ -33,8 +34,11 @@ function homeScreen(){
     var messageSpan = document.createElement("span")
     messageSpan.setAttribute("id", "homemessage")
     messageSpan.setAttribute("class", "col-12 d-flex justify-content-center")
+    messageSpan.style.lineHeight = "200px";
     messageSpan.innerText = "Welcome to TypeQuest!"
     backgroundDiv.appendChild(messageSpan)
+    // typeWriter()
+
 //creates button div
     var buttonDiv = document.createElement("div")
     buttonDiv.setAttribute("class", "col-8 d-flex justify-content-center")
@@ -42,7 +46,7 @@ function homeScreen(){
 //creates Story button
     var buttonOne = document.createElement("button");
     buttonOne.innerText = "Story Mode"
-    buttonOne.setAttribute("class", "col-6 btn btn-outline-light btn-lg")
+    buttonOne.setAttribute("class", "col-6 btn btn-outline-dark btn-lg")
     buttonOne.setAttribute("id", "button-one")
     buttonDiv.appendChild(buttonOne)
     document.getElementById("button-one").addEventListener("click", function(){
@@ -53,7 +57,7 @@ function homeScreen(){
 //creates Speed button
     var buttonTwo = document.createElement("button");
     buttonTwo.innerText = "Speed Mode"
-    buttonTwo.setAttribute("class", "col-6 btn btn-outline-light btn-lg")
+    buttonTwo.setAttribute("class", "col-6 btn btn-outline-dark btn-lg")
     buttonTwo.setAttribute("id", "button-two")
     buttonDiv.appendChild(buttonTwo)
     document.getElementById("button-two").addEventListener("click", function(){
@@ -65,8 +69,7 @@ function homeScreen(){
 
 function gameEndScreen(){
 document.getElementById("maincontainer").style.display = "none"
-var audioTheme = document.getElementById("storyTheme")
-audioTheme.pause()
+
 //creates main containing div
     var body = document.querySelector("body")
     var end = document.createElement("div")
@@ -80,7 +83,9 @@ audioTheme.pause()
     if (youWin === false){
         backgroundDiv.style.backgroundColor = "black"
     } else {
-        backgroundDiv.style.backgroundColor = "red"
+
+         document.querySelector("body").style.backgroundImage = `url("images/fire.jpg")`
+                 document.querySelector("body").style.backgroundSize = "cover"
 
     }
 //creates game ended message
@@ -124,15 +129,18 @@ audioTheme.pause()
 }
 
 
-// function typeWriter(){
-//          var i = 0
-//          var welcomeText = "Welcome to TypeQuest!"
-//              if (i < welcomeText.length){
-//                 document.getElementById("homemessage").innerText += welcomeText.charAt(i);
-//                 i++
-//                 setTimeout(typeWriter, 30)
-//             }
-//         }
+function typeWriter(){
+         var k = 0
+         var welcomeText = "Welcome to TypeQuest!"
+             if (k < welcomeText.length){
+                document.getElementById("homemessage").innerText += welcomeText.charAt(k);
+                k++
+                var interval = setInterval(typeWriter, 30)
+            }
+             if (k === welcomeText.length){
+                clearInterval(interval)
+             }
+        }
 
 //FOR STORY MODE
 
@@ -162,6 +170,8 @@ enterPress = 1
 var i = 1
 
 function gameMode(){
+    document.querySelector("body").style.backgroundImage = `url("images/wood.jpg")`
+    document.querySelector("body").style.backgroundSize = "cover"
     displayMessage()
     shuffle(peasantQuest[storyTracker]["array"])
     displayShuffledArray();
@@ -173,7 +183,7 @@ function gameMode(){
     theme.setAttribute("src", "terra-theme.mp3")
     audioTheme.appendChild(theme)
 
-    audioTheme.play();
+    // audioTheme.play();
 
     document.getElementById("input")
         .addEventListener("keypress", function(){
@@ -204,8 +214,18 @@ function gameMode(){
                 shuffle(peasantQuest[storyTracker]["array"])
                 }
 
+                if (storyTracker === 5){
+                document.querySelector("body").style.backgroundImage = `url("images/forest.jpg")`
+                 document.querySelector("body").style.backgroundSize = "cover"
+                } else if (storyTracker === 8){
+                     document.querySelector("body").style.backgroundImage = `url("images/moat.jpeg")`
+                 document.querySelector("body").style.backgroundSize = "cover"
+                }
+
                 if (enterPress === 37){
                     youWin = true // add in between whether game won or lost
+                    var audioTheme = document.getElementById("storyTheme")
+                    audioTheme.pause()
                     gameEndScreen();
                 }
             }
