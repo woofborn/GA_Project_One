@@ -8,10 +8,9 @@ var youWin = false;
 var enterPress = 0;
 var timer=5;
 var storyTracker = 0;
+var giantArray = [];
 //each array will have 30 words (except for insane)
-var easyWords = ["cat", "dog", "rat", "pen", "whale"]; //5-6 letters
-var mediumWords = []; //9-10 letters
-var hardWords = []; // 13-15 letters
+
 var bonusWords = ["antidisestablishmentarianism", "floccinaucinihilipilification", "psychophysicotherapeutics", "radioimmunoelectrophoresis", "pneumoencephalographically", "otorhinolaryngological", "thyroparathyroidectomized", "psychoneuroendocrinological", "hepaticocholangiogastrostomy", "pseudopseudohypoparathyroidism" ]; //above 20 letters
 //NOTE TO SELF: create different word arrays for story mode, concatenate arrays for speed mode!
 
@@ -274,18 +273,23 @@ function speedMode(){
     var theme = document.createElement("source")
     theme.setAttribute("src", "ThemeA.mp3")
     audioTheme.appendChild(theme)
-    // audioTheme.play()
+    audioTheme.play()
+
+    concatArray();
 
     document.querySelector("body").style.backgroundImage = `url("images/clocks.jpg")`
     document.querySelector("body").style.backgroundSize = "cover"
     document.getElementById("input")
         .addEventListener("keypress", function(){
         input = event.target.value;
+
             if (event.key === "Enter"){
+
             enterPressSpeed ++
             initiateCount();
             checkMatchSpeed();
-            displayWord(easyWords);//easy words for testing
+
+            displayWord(giantArray);
 
             document.getElementById("inputbox").value = ""
 
@@ -339,8 +343,19 @@ function gameOverSpeed(){
     }
 }
 
+function concatArray(){
+
+    giantArray = peasantQuest[0]["array"].concat(peasantQuest[1]["array"])
+
+    for (let z=2; z<peasantQuest.length; z++){
+        giantArray = giantArray.concat(peasantQuest[z]["array"])
+    }
+    giantArray = giantArray.concat(bonusWords)
+}
+
+
 function moveCat(){
-    var movement = score * 10
+    var movement = score * 5
     document.getElementById("cat").style.left = `${movement}%`
 }
 

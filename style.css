@@ -94,6 +94,13 @@ img {
 }
 
 button{
-	font-size: 10em;
+
 	color: black;
+	white-space: normal;
+}
+
+#endmessage{
+	font-size: 2em;
+	color:white;
+	font-family: monospace;
 }
