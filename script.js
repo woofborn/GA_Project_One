@@ -76,14 +76,13 @@ function shuffle(array){
 }
 //this function shuffles arrays - for story mode
 function displayShuffledArray(array){
-    shuffle(peasantQuest[storyTracker]["array"]);
-
     var i = 0
     var display = document.getElementById("display");
     display.innerText = peasantQuest[storyTracker]["array"][i];
     word = peasantQuest[storyTracker]["array"][i];
     i++
-    console.log(word)
+    console.log(word + "first")
+     console.log(i + "first")
 
 }
 
@@ -95,24 +94,30 @@ function displayMessage(){
 
 
 enterPress = 1
+var i = 1
+
 
 function gameMode(){
     displayMessage()
+    shuffle(peasantQuest[storyTracker]["array"])
     displayShuffledArray();
+    console.log(peasantQuest[storyTracker]["array"])
+
     document.getElementById("input")
         .addEventListener("keypress", function(){
             input = event.target.value;
-            var shuffledArray = shuffle(peasantQuest[storyTracker]["array"]);
 
             if (event.key === "Enter"){
                 checkMatchStory();
 
-                var i = 0
                 var display = document.getElementById("display");
                 display.innerText = peasantQuest[storyTracker]["array"][i];
                 word = peasantQuest[storyTracker]["array"][i];
                 i++
-                console.log(word)
+
+                console.log(i + "second")
+                console.log(peasantQuest[storyTracker]["array"])
+                console.log(word + "second")
 
                 displayMessage();
 
@@ -122,7 +127,9 @@ function gameMode(){
 
                 if (enterPress%3 === 0){
                 storyTracker++
-                console.log(enterPress)
+                i = 0
+                shuffle(peasantQuest[storyTracker]["array"])
+
         }
             }
         })
