@@ -51,7 +51,7 @@ function homeScreen(){
     document.getElementById("button-one").addEventListener("click", function(){
     document.getElementById("maincontainer").style.display = "initial"
     document.getElementById("homepage").style.display = "none"
-    gameMode()
+    storyMode()
     })
 //creates Speed button
     var buttonTwo = document.createElement("button");
@@ -174,12 +174,14 @@ function displayMessage(){
 enterPress = 1
 var i = 1
 
-function gameMode(){
+function storyMode(){
     document.querySelector("body").style.backgroundImage = `url("images/wood.jpg")`
     document.querySelector("body").style.backgroundSize = "cover"
     displayMessage()
     shuffle(peasantQuest[storyTracker]["array"])
     displayShuffledArray();
+
+    document.getElementById("timer").style.visibility = "hidden"
 
     var audioTheme = document.createElement("audio")
     audioTheme.setAttribute("id", "storyTheme")
