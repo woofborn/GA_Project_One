@@ -85,6 +85,14 @@ document.getElementById("maincontainer").style.display = "none"
 
          document.querySelector("body").style.backgroundImage = `url("images/fire.jpg")`
          document.querySelector("body").style.backgroundSize = "cover"
+         var audioTheme = document.createElement("audio")
+        audioTheme.setAttribute("id", "victory")
+
+        document.getElementById("maincontainer").appendChild(audioTheme)
+        var theme = document.createElement("source")
+        theme.setAttribute("src", "victory.mp3")
+        audioTheme.appendChild(theme)
+        audioTheme.play()
 
     }
 //creates game ended message
