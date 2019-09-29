@@ -15,8 +15,9 @@ var hardWords = []; // 13-15 letters
 var bonusWords = ["antidisestablishmentarianism", "floccinaucinihilipilification", "psychophysicotherapeutics", "radioimmunoelectrophoresis", "pneumoencephalographically", "otorhinolaryngological", "thyroparathyroidectomized", "psychoneuroendocrinological", "hepaticocholangiogastrostomy", "pseudopseudohypoparathyroidism" ]; //above 20 letters
 //NOTE TO SELF: create different word arrays for story mode, concatenate arrays for speed mode!
 
-function homeScreen(){
+window.addEventListener("load", homeScreen)
 
+function homeScreen(){
 //creates main containing div
     var body = document.querySelector("body")
     var home = document.createElement("div")
@@ -42,7 +43,13 @@ function homeScreen(){
     var buttonOne = document.createElement("button");
     buttonOne.innerText = "Story Mode"
     buttonOne.setAttribute("class", "col-6 btn btn-outline-light btn-lg")
+    buttonOne.setAttribute("id", "button-one")
     buttonDiv.appendChild(buttonOne)
+    document.getElementById("button-one").addEventListener("click", function(){
+    document.getElementById("maincontainer").style.display = "initial"
+    document.getElementById("homepage").style.display = "none"
+    gameMode()
+    })
 //creates Speed button
     var buttonTwo = document.createElement("button");
     buttonTwo.innerText = "Speed Mode"
@@ -54,6 +61,7 @@ function homeScreen(){
     document.getElementById("homepage").style.display = "none"
     })
 }
+
 
 
 
