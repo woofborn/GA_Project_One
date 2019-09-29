@@ -55,6 +55,8 @@ function homeScreen(){
     })
 }
 
+
+
 function gameEndScreen(){
 document.getElementById("maincontainer").style.display = "none"
 //creates main containing div
@@ -96,8 +98,8 @@ document.getElementById("maincontainer").style.display = "none"
     buttonOne.setAttribute("id", "button-yes")
     buttonDiv.appendChild(buttonOne)
     document.getElementById("button-yes").addEventListener("click", function(){
-    document.getElementById("homepage").style.display = "initial"
-    document.getElementById("endpage").style.display = "none"
+        document.getElementById("endpage").style.display = "none"
+        document.getElementById("homepage").style.display = "initial"
     })
 //creates No button
     var buttonTwo = document.createElement("button");
@@ -180,14 +182,14 @@ function gameMode(){
                 console.log(enterPress)
                 document.getElementById("inputbox").value = ""
 
-                if (enterPress%3 === 0 && storyTracker < 12){
+                if (enterPress%3 === 0 && storyTracker < 11){
                 storyTracker++
                 i = 0
                 shuffle(peasantQuest[storyTracker]["array"])
+                }
 
-                    if (storyTracker === 12){ // add in between whether game won or lost
-                    gameEndScreen();
-                    }
+                if (storyTracker === 11){ // add in between whether game won or lost
+                gameEndScreen();
                 }
 
 
@@ -208,7 +210,7 @@ function checkMatchStory(){
 
     } else if (input !== word) {
        document.getElementById("checkmark").setAttribute("src", "images/crossout.png")
-       if (lives < 0){
+       if (lives > 0){
            var lifeBar = document.querySelector("#lifebar")
            var life = document.querySelector(`#life${lives}`)
            lifeBar.removeChild(life)
