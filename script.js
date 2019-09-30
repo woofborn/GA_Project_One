@@ -6,12 +6,12 @@ var score = 0;
 var lives = 6;
 var youWin = false;
 var enterPress = 0;
-var timer=5;
+var timer = 10;
 var storyTracker = 0;
 var giantArray = [];
 //each array will have 30 words (except for insane)
 
-var bonusWords = ["antidisestablishmentarianism", "floccinaucinihilipilification", "psychophysicotherapeutics", "radioimmunoelectrophoresis", "pneumoencephalographically", "otorhinolaryngological", "thyroparathyroidectomized", "psychoneuroendocrinological", "hepaticocholangiogastrostomy", "pseudopseudohypoparathyroidism" ]; //above 20 letters
+var bonusWords = ["cat", "rat", "dog", "pig", "papaya", "bunny", "mug","antidisestablishmentarianism", "floccinaucinihilipilification", "psychophysicotherapeutics", "radioimmunoelectrophoresis", "pneumoencephalographically", "otorhinolaryngological", "thyroparathyroidectomized", "psychoneuroendocrinological", "hepaticocholangiogastrostomy", "pseudopseudohypoparathyroidism" ]; //above 20 letters
 //NOTE TO SELF: create different word arrays for story mode, concatenate arrays for speed mode!
 
 window.addEventListener("load", homeScreen)
@@ -92,7 +92,7 @@ document.getElementById("maincontainer").style.display = "none"
         var theme = document.createElement("source")
         theme.setAttribute("src", "victory.mp3")
         audioTheme.appendChild(theme)
-        // audioTheme.play()
+        audioTheme.play()
 
     }
 //creates game ended message
@@ -190,7 +190,7 @@ function storyMode(){
     theme.setAttribute("src", "terra-theme.mp3")
     audioTheme.appendChild(theme)
 
-    // audioTheme.play();
+    audioTheme.play();
 
     document.getElementById("input")
         .addEventListener("keypress", function(){
@@ -263,14 +263,14 @@ function checkMatchStory(){
 
     } else if (input !== word) {
        document.getElementById("checkmark").setAttribute("src", "images/crossout.png")
-       // if (lives > 0){
-       //     var lifeBar = document.querySelector("#lifebar")
-       //     var life = document.querySelector(`#life${lives}`)
-       //     lifeBar.removeChild(life)
-       //     lives--
-       //  } else if (lives === 0) {
-       //      gameEndScreen()
-       //  }
+       if (lives > 0){
+           var lifeBar = document.querySelector("#lifebar")
+           var life = document.querySelector(`#life${lives}`)
+           lifeBar.removeChild(life)
+           lives--
+        } else if (lives === 0) {
+            gameEndScreen()
+        }
     }
 }
 
@@ -306,7 +306,9 @@ function speedMode(){
     var theme = document.createElement("source")
     theme.setAttribute("src", "ThemeA.mp3")
     audioTheme.appendChild(theme)
-    // audioTheme.play()
+    audioTheme.play()
+
+    document.getElementById("cat").style.visibility = "visible"
 
     document.getElementById("lives").style.visibility = "hidden"
 
