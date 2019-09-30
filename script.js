@@ -34,7 +34,7 @@ function homeScreen(){
     messageSpan.setAttribute("id", "homemessage")
     messageSpan.setAttribute("class", "col-12 d-flex justify-content-center")
     messageSpan.style.lineHeight = "200px";
-    messageSpan.innerText = "Welcome to TypeQuest!"
+    messageSpan.innerHTML = `<p>Welcome to <a href = "instructions.html"> TypeQuest</a>!</p>`
     backgroundDiv.appendChild(messageSpan)
     // typeWriter()
 
