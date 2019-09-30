@@ -92,19 +92,21 @@ document.getElementById("maincontainer").style.display = "none"
         var theme = document.createElement("source")
         theme.setAttribute("src", "victory.mp3")
         audioTheme.appendChild(theme)
-        audioTheme.play()
+        // audioTheme.play()
 
     }
 //creates game ended message
     var messageSpan = document.createElement("span")
     messageSpan.setAttribute("id", "endmessage")
     messageSpan.setAttribute("class", "col-12 d-flex justify-content-center")
+    messageSpan.style.lineHeight = "100px"
         if (youWin === false){
             messageSpan.innerText = `GAME OVER
                                     Your score was: ${score}.
                                     Would you like to play again?`
         } else {
-            messageSpan.innerText = `You beat TypeQuest! Your score was: ${score}!
+            messageSpan.innerText = `You beat TypeQuest!
+                                    Your score was: ${score}!
                                     Would you like to play again?`
         }
     backgroundDiv.appendChild(messageSpan)
@@ -115,7 +117,7 @@ document.getElementById("maincontainer").style.display = "none"
 //creates Yes button
     var buttonOne = document.createElement("button");
     buttonOne.innerText = "HECK YES"
-    buttonOne.setAttribute("class", "col-6 btn btn-outline-light btn-lg")
+    buttonOne.setAttribute("class", "col-6 btn btn-outline-dark btn-lg")
     buttonOne.setAttribute("id", "button-yes")
     buttonDiv.appendChild(buttonOne)
     document.getElementById("button-yes").addEventListener("click", function(){
@@ -133,19 +135,18 @@ document.getElementById("maincontainer").style.display = "none"
     })
 }
 
-
+var k = 0
 function typeWriter(){
-         var k = 0
-         var welcomeText = "Welcome to TypeQuest!"
-             if (k < welcomeText.length){
-                document.getElementById("homemessage").innerText += welcomeText.charAt(k);
-                k++
-                var interval = setInterval(typeWriter, 30)
-            }
-             if (k === welcomeText.length){
-                clearInterval(interval)
-             }
-        }
+
+     var welcomeText = "Welcome to TypeQuest!"
+
+     while (k < welcomeText.length){
+        document.getElementById("homemessage").innerText += welcomeText.charAt(k);
+        k++
+        var interval = setTimeout(typeWriter, 50)
+
+     }
+}
 
 //FOR STORY MODE
 
@@ -162,8 +163,7 @@ function displayShuffledArray(array){
     display.innerText = peasantQuest[storyTracker]["array"][i];
     word = peasantQuest[storyTracker]["array"][i];
     i++
-    console.log(word + "first")
-     console.log(i + "first")
+    console.log(array)
 }
 
 //first story displayed
@@ -171,7 +171,7 @@ function displayMessage(){
     document.getElementById("message").innerText = peasantQuest[storyTracker]["message"]
 }
 
-enterPress = 1
+enterPress = 1 //enterpress count for storymode
 var i = 1
 
 function storyMode(){
@@ -221,10 +221,24 @@ function storyMode(){
                 shuffle(peasantQuest[storyTracker]["array"])
                 }
 
-                if (enterPress === 13){
+                if (enterPress === 7){
+                    document.getElementById("cat").style.visibility = "visible"
+                }
+                else if (enterPress === 13){
                 document.querySelector("body").style.backgroundImage = `url("images/forest.jpg")`
                  document.querySelector("body").style.backgroundSize = "cover"
-                } else if (enterPress === 25){
+                 document.getElementById("swordstone").style.visibility = "visible"
+                }
+
+
+                else if (enterPress === 16){
+                    document.getElementById("warrior").style.visibility = "visible"
+                } else if (enterPress === 19){
+                    document.getElementById("sword").style.visibility = "visible"
+                }
+
+                else if (enterPress === 25){
+                     document.getElementById("goat").style.visibility = "visible"
                      document.querySelector("body").style.backgroundImage = `url("images/moat.jpeg")`
                  document.querySelector("body").style.backgroundSize = "cover"
                 }
@@ -244,7 +258,7 @@ function checkMatchStory(){
         score++
            document.getElementById("number").innerText = score
            document.getElementById("checkmark").setAttribute("src", "images/checkmark.png")
-           moveCat();
+           // moveCat();
            // moveBar();
 
     } else if (input !== word) {
@@ -385,6 +399,13 @@ function moveCat(){
     var movement = score * 5
     document.getElementById("cat").style.left = `${movement}%`
 }
+
+// function txtToSpeech(text) {
+//  const msg = new SpeechSynthesisUtterance(text);
+//  window.speechSynthesis.speak(msg);
+// }
+
+// document.getElementById("cat").addEventListener("click", txtToSpeech("meow"))
 
 // function moveBar() {
 //     var progressBar = document.getElementById("myBar");

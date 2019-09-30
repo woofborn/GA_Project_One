@@ -9,14 +9,14 @@ var peasantQuest = [
         "Meow! Meowmeowmeow..."
         Sleepily, you mumble at the cat...`,
 
-        array: ["mmf", "grr", "snnrk", "blrg", "plft"]
+        array: ["mmf", "grr", "snnrk", "blrg", "plft", "uugh"]
     },
 
     {//one
         message: `Unfortunately, this only encourages the creature. It pounces on your face.
         Enraged, you sit up and scold the cat with some choice words...`,
 
-        array: ["fudgepie", "balderdash", "shitake", "caramba", "auflauf"]
+        array: ["fudgepie", "balderdash", "shitake", "caramba", "auflauf", "banana"]
     },
 
     {//two
@@ -29,7 +29,7 @@ var peasantQuest = [
         You begin to have a sneaking suspicion that (1) this is no ordinary cat, (2) something has happened to your village and (3) only YOU, a nameless farm boy with nothing to his name, can save the villagers!
         You begin to daydream of all the rewards you would receive...`,
 
-        array: ["lots of gold", "herd of cows", "black horse", "sack of potatoes", "goose feather bed"]
+        array: ["lots of gold", "herd of cows", "black horse", "sack of potatoes", "goosefeather bed", "fluffy unicorn"]
     },
 
     {//three
@@ -39,7 +39,7 @@ var peasantQuest = [
         Reluctantly, you begin to follow it.
         You decide to think of a name for the cat...`,
 
-        array: ["Kitty McMeowface", "Sir Pouncealot", "Kitten Schmitten", "Fluffy von Whiskers", "Lady Catbeth"]
+        array: ["Kitty McMeowface", "Sir Pouncealot", "Kitten Schmitten", "Fluffy von Whiskers", "Lady Catbeth", "Meow van Winkle"]
     },
 
     {//four
@@ -50,7 +50,7 @@ var peasantQuest = [
         You do remember a story about an inconveniently located sword.
         What was it's name...`,
 
-        array: ["Excalibur?", "Anduril?", "Longclaw?", "Zulfiqar?", "Durandal?"]
+        array: ["Excalibur?", "Anduril?", "Longclaw?", "Zulfiqar?", "Durandal?", "Oathkeeper?"]
     },
 
     {//five
@@ -60,7 +60,7 @@ var peasantQuest = [
         He looks angry.
         Panicking, you reach for the sword in the stone and think through what you know about warfare...`,
 
-        array: ["Pretend to be weak, that he may grow arrogant", "Subdue the enemy, without fighting", "In the midst of chaos, there is also opportunity", "The whole secret lies, in confusing the enemy", "Great results, can be achieved with small forces."]
+        array: ["Pretend to be weak, that he may grow arrogant.", "Subdue the enemy, without fighting.", "In the midst of chaos, there is also opportunity.", "The whole secret lies, in confusing the enemy.", "Great results, can be achieved with small forces.", "I don't know anything about warfare, lol."]
     },
 
     {//six
@@ -79,13 +79,13 @@ var peasantQuest = [
     The cat trots along beside you, making you more confident that you are heading the right way.
     Settling in for a bit of a walk, you try to remember some marching songs...`,
 
-        array: ["The ants go marching one-by-one, hoorah! Hoorah!", "Oh, when the saints! Go marching in!", "Glory! Glory, hallelujah! The truth is marching on!", "Left-toe! Right-toe! Keep up the tempo!", "Links zwo! Links zwo! Links, zwo, drei, vier links!"]
+        array: ["The ants go marching one-by-one, hoorah!", "Oh, when the saints! Go marching in!", "Glory! Glory, hallelujah! The truth is marching on!", "Left-toe! Right-toe! Keep up the tempo!", "Links zwo! Links, zwo, drei, vier links!", "March, march, march! I guess we're marching now!"]
     },
     {//eight
         message: `Before too long, you find yourself approaching an immense moat.
     In the moat, there is a boat afloat.
     On the boat, there is a goat.
-    "Baaaa!"says the goat. "How many other words that rhyme with 'moat' can you name in 10 seconds?"`,
+    "Baaaa!"says the goat. "How many other words that rhyme with 'moat' can you name?"`,
 
         array: ["bloat", "coat", "gloat", "haute", "mote", "note", "oat", "quote", "rote", "wrote", "smote", "stoat", "throat", "tote", "vote", "float", "demote", "connote", "devote", "denote", "emote", "garrote", "misquote", "outvote", "promote", "remote", "rewrote"]
     },
@@ -96,7 +96,8 @@ var peasantQuest = [
         As the boat travels across the moat, you begin to see the outline of a castle, and hear the strains of music coming from therein.
         Inspired by the calm lapping of the water of the moat against the boat, you burst into song...`,
 
-        array: ["lalalalalalala"] //think of some songs...
+        array: ["Belle nuit, ô nuit d'amour / Souris à nos ivresses", "Ma il mio mistero è chiuso in me / Il nome mio nessun saprà", "Veduto e vissuto con te / Adesso sì, li vivrò, con te partirò", "Hört, Rachegötter / Hört der Mutter Schwur!", "Tralalala, I don't know opera songs / Chuchichäschtli!"
+] //think of some songs...
     },
 
     {//10
@@ -108,18 +109,20 @@ var peasantQuest = [
         Shock turns to disbelief, and disbelief to anger.
         You erupt...`,
 
-        array: ["abhAS$#!@TAFasb!!!", " ds;lkn;KAlkjAV@#%adbn?!"] //more keyboard mashing
+        array: ["@#{^*)!", "$%^}|?!", "?(~!<#$", "#%^+?`!", "&/%#!@?"] //more keyboard mashing
     },
     {//11
         message: `Silence descends. Someone coughs awkwardly.
         "Sorry...we forgot to invite you to the party", someone mumbles sheepishly.
         You take your sword out and set the curtains on fire.
         You walk back outside to the moat and the goat in the boat.
+
         You pick up the cat, get in the boat and look back at the castle.
         You can't believe you went through all that hassle.
+
         As the boat departs, you hear the villagers...`,
 
-        array: ["aarrGGGGHhh!@$%"] //more keyboard mashing, but like, screaming or something.
+        array: ["aaHHHhh!@$%", "arrRGGgg$%^!", "ggbBBkkK*@$!", "pPPllszZ...!", "hAaelpP$!?"] //more keyboard mashing, but like, screaming or something.
     }
 
 ] //THE END.
