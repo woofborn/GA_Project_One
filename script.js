@@ -8,7 +8,7 @@ var youWin = false;
 var enterPress = 0;
 var timer = 10;
 var storyTracker = 0;
-var giantArray = [];
+var giantArray = ['Abate','Abstract','Abysmal','Accordingly','Acquisition','Adapt','Adept','Adequate','Advent','Adversarial','Advocate','Aesthetic','Afford','Agitate','Allow','Allude','Altercation','Ambiguous','Ambitious','Ambivalence','Analogous','Annihilate','Anomaly','Anticipate','Antipathy','Apex','Apprehension','Articulate','Artificial','Assertion','Austere','Authenticity','Avenue','Avid','Basic','Bear','Benevolent','Bias','Bittersweet','Bolster','Boost','Brawl','Brevity','Candid','Candor','Capitalize','Capture','Civic','Clinical','Clout','Coarse','Coincide','Commission','Comparable','Competent','Complacent','Complement','Concede','Conceive','Condone','Conducive','Conduct','Confide','Confine','Consensus','Constitute','Contemplate','Contend','Contradict','Controversial','Conventional','Convey','Conviction','Corroborate','Counteract','Counterargument','Counterproductive','Culmination','Cultivate','Decree','Deference','Deficient','Demonstrate','Demur','Deplete','Desolate','Devise','Dilemma','Diligence','Diminish','Dire','Discord','Disdain','Dismay','Disparage','Dispatch','Diversification','Doctrine','Dominion','Dreary','Dubious','Eccentric','Egregious','Eloquent','Eminent','Emit','Emphatic','Empirical','Endow','Endure','Entail','Entrenched','Enumerate','Envy','Erratic','Establish','Evoke','Exacerbate','Excel','Exert','Exhilarating','Expend','Exploit','Facilitate','Feasibility','Ferocity','Fiscal','Flourish','Fluctuate','Foment','Foreseeable','Frankly','Freewheeling','Fundamental','Galvanizing','Geriatric','Hostile','Hypothetical','Ignominious','Impart','Impartiality','Imposing','Imposition','Imprudent','Incite','Indifference','Indiscriminately','Indulge','Infer','Innovative','Insatiable','Inversion','Invoke','Irreconcilable','Lament','Locomotion','Lucrative','Malicious','Malleable','Materialistic','Melodramatic','Modest','Modify','Momentous','Novel','Nuance','Null','Objectivity','Obsolete','Omnipotent','Onset','Opine','Ornate','Oust','Paramount','Peculiar','Perish','Persecute','Petulant','Pinnacle','Pitiable','Plausible','Postulate','Potent','Pragmatic','Precedent','Predecessor','Prescribe','Principle','Prohibit','Prompt','Promulgate','Prosecute','Provocative','Qualitative','Quantitative','Quirk','Ramify','Rash','Raw','Readily','Reconsideration','Reform','Refute','Reinforce','Reluctantly','Renounce','Reproach','Repudiate','Retention','Satiated','Savvy','Scandalous','Scorn','Scrupulous','Scrutinize','Secrete','Sentiment','Sheer','Simple','Sinister','Solidarity','Sparingly','Spawn','Spur','Squalid','Stark','Static','Subordinate','Subsequently','Substantial','Substantiate','Subtle','Sufficient','Surly','Surmount','Susceptible','Tactful','Taut','Teeming','Temperament','Tentative','Transparent','Treacherous','Tremendous','Ubiquitous','Unadorned','Undermine','Underscore','Undulate','Unilateral','Unjust','Unmitigated','Unprecedented','Unveil','Urge','Validate','Viability','Vital','Vow','Warrant','Yield'];
 //each array will have 30 words (except for insane)
 
 var bonusWords = ["cat", "rat", "dog", "pig", "papaya", "bunny", "mug","antidisestablishmentarianism", "floccinaucinihilipilification", "psychophysicotherapeutics", "radioimmunoelectrophoresis", "pneumoencephalographically", "otorhinolaryngological", "thyroparathyroidectomized", "psychoneuroendocrinological", "hepaticocholangiogastrostomy", "pseudopseudohypoparathyroidism" ]; //above 20 letters
@@ -227,6 +227,7 @@ function storyMode(){
                 else if (enterPress === 13){
                 document.querySelector("body").style.backgroundImage = `url("images/forest.jpg")`
                  document.querySelector("body").style.backgroundSize = "cover"
+                 document.querySelector("body").style.backgroundRepeat = "no-repeat"
                  document.getElementById("swordstone").style.visibility = "visible"
                 }
 
@@ -241,6 +242,7 @@ function storyMode(){
                      document.getElementById("goat").style.visibility = "visible"
                      document.querySelector("body").style.backgroundImage = `url("images/moat.jpeg")`
                  document.querySelector("body").style.backgroundSize = "cover"
+                 document.querySelector("body").style.backgroundRepeat = "no-repeat"
                 }
 
                 if (enterPress === 37){
@@ -258,10 +260,8 @@ function checkMatchStory(){
         score++
            document.getElementById("number").innerText = score
            document.getElementById("checkmark").setAttribute("src", "images/checkmark.png")
-           // moveCat();
-           // moveBar();
-
-    } else if (input !== word) {
+    }
+    else if (input !== word) {
        document.getElementById("checkmark").setAttribute("src", "images/crossout.png")
        if (lives > 0){
            var lifeBar = document.querySelector("#lifebar")
@@ -312,7 +312,7 @@ function speedMode(){
 
     document.getElementById("lives").style.visibility = "hidden"
 
-    concatArray();
+    // concatArray();
 
     var timerInput = document.getElementById("timer-input");
     timerInput.onchange = function(){
@@ -332,7 +332,8 @@ function speedMode(){
             initiateCount();
             checkMatchSpeed();
 
-            displayWord(giantArray);
+            var arrayWords = giantArray.map(v => v.toLowerCase());
+            displayWord(arrayWords);
 
             document.getElementById("inputbox").value = ""
 
@@ -351,7 +352,7 @@ function checkMatchSpeed(){
            // moveBar();
 
     } else if (input !== word && enterPressSpeed !== 1) {
-       lives-- // consider hiding lives for speed mode
+       lives--
        document.getElementById("checkmark").setAttribute("src", "images/crossout.png")
     }
 
@@ -386,38 +387,7 @@ function gameOverSpeed(){
     }
 }
 
-function concatArray(){
-
-    giantArray = peasantQuest[0]["array"].concat(peasantQuest[1]["array"])
-
-    for (let z=2; z<peasantQuest.length; z++){
-        giantArray = giantArray.concat(peasantQuest[z]["array"])
-    }
-    giantArray = giantArray.concat(bonusWords)
-}
-
-
 function moveCat(){
-    var movement = score * 5
+    var movement = score * 2
     document.getElementById("cat").style.left = `${movement}%`
 }
-
-// function txtToSpeech(text) {
-//  const msg = new SpeechSynthesisUtterance(text);
-//  window.speechSynthesis.speak(msg);
-// }
-
-// document.getElementById("cat").addEventListener("click", txtToSpeech("meow"))
-
-// function moveBar() {
-//     var progressBar = document.getElementById("myBar");
-//     var width;
-
-//     if (score >= 1){
-//     width = score * 10;
-//     progressBar.style.width = `${width}%`;
-//     progressBar.innerHTML = `${width}%`;
-//     } else if (score > 10){
-//         width = 0
-//     }
-// }
