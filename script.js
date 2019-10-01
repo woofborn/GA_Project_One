@@ -269,6 +269,13 @@ function checkMatchStory(){
     }
     else if (input !== word) {
        document.getElementById("checkmark").setAttribute("src", "images/crossout.png")
+        var audioTheme = document.createElement("audio")
+        audioTheme.setAttribute("id", "angrycat")
+        document.getElementById("maincontainer").appendChild(audioTheme)
+        var angrycat = document.createElement("source")
+        angrycat.setAttribute("src", "angrycat.m4a")
+        audioTheme.appendChild(angrycat)
+        audioTheme.play()
        if (lives > 0){
            var lifeBar = document.querySelector("#lifebar")
            var life = document.querySelector(`#life${lives}`)
