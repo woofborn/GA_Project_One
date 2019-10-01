@@ -348,6 +348,7 @@ function countDown(){
     setInterval(function(){
                     document.getElementById("seconds").innerText = timer;
                     console.log(timer)
+                    timer--
                     if (timer<=5){
                     document.getElementById("seconds").style.color = "red"
                     }
@@ -356,7 +357,7 @@ function countDown(){
                         clearInterval(interval)
                         setTimeout(gameOverSpeed,1000)
                         }
-                    timer--
+
                     },1000);
 }
 
