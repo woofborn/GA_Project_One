@@ -349,7 +349,7 @@ function countDown(){
                     document.getElementById("seconds").innerText = timer;
                     console.log(timer)
                     timer--
-                    if (timer<=5){
+                    if (timer<5){
                     document.getElementById("seconds").style.color = "red"
                     }
 
