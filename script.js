@@ -5,7 +5,6 @@ var input;
 var score = 0;
 var lives = 6;
 var youWin = false;
-var enterPress = 0;
 var timer = 10;
 var storyTracker = 0;
 var giantArray = ['Abate','Abstract','Abysmal','Accordingly','Acquisition','Adapt','Adept','Adequate','Advent','Adversarial','Advocate','Aesthetic','Afford','Agitate','Allow','Allude','Altercation','Ambiguous','Ambitious','Ambivalence','Analogous','Annihilate','Anomaly','Anticipate','Antipathy','Apex','Apprehension','Articulate','Artificial','Assertion','Austere','Authenticity','Avenue','Avid','Basic','Bear','Benevolent','Bias','Bittersweet','Bolster','Boost','Brawl','Brevity','Candid','Candor','Capitalize','Capture','Civic','Clinical','Clout','Coarse','Coincide','Commission','Comparable','Competent','Complacent','Complement','Concede','Conceive','Condone','Conducive','Conduct','Confide','Confine','Consensus','Constitute','Contemplate','Contend','Contradict','Controversial','Conventional','Convey','Conviction','Corroborate','Counteract','Counterargument','Counterproductive','Culmination','Cultivate','Decree','Deference','Deficient','Demonstrate','Demur','Deplete','Desolate','Devise','Dilemma','Diligence','Diminish','Dire','Discord','Disdain','Dismay','Disparage','Dispatch','Diversification','Doctrine','Dominion','Dreary','Dubious','Eccentric','Egregious','Eloquent','Eminent','Emit','Emphatic','Empirical','Endow','Endure','Entail','Entrenched','Enumerate','Envy','Erratic','Establish','Evoke','Exacerbate','Excel','Exert','Exhilarating','Expend','Exploit','Facilitate','Feasibility','Ferocity','Fiscal','Flourish','Fluctuate','Foment','Foreseeable','Frankly','Freewheeling','Fundamental','Galvanizing','Geriatric','Hostile','Hypothetical','Ignominious','Impart','Impartiality','Imposing','Imposition','Imprudent','Incite','Indifference','Indiscriminately','Indulge','Infer','Innovative','Insatiable','Inversion','Invoke','Irreconcilable','Lament','Locomotion','Lucrative','Malicious','Malleable','Materialistic','Melodramatic','Modest','Modify','Momentous','Novel','Nuance','Null','Objectivity','Obsolete','Omnipotent','Onset','Opine','Ornate','Oust','Paramount','Peculiar','Perish','Persecute','Petulant','Pinnacle','Pitiable','Plausible','Postulate','Potent','Pragmatic','Precedent','Predecessor','Prescribe','Principle','Prohibit','Prompt','Promulgate','Prosecute','Provocative','Qualitative','Quantitative','Quirk','Ramify','Rash','Raw','Readily','Reconsideration','Reform','Refute','Reinforce','Reluctantly','Renounce','Reproach','Repudiate','Retention','Satiated','Savvy','Scandalous','Scorn','Scrupulous','Scrutinize','Secrete','Sentiment','Sheer','Simple','Sinister','Solidarity','Sparingly','Spawn','Spur','Squalid','Stark','Static','Subordinate','Subsequently','Substantial','Substantiate','Subtle','Sufficient','Surly','Surmount','Susceptible','Tactful','Taut','Teeming','Temperament','Tentative','Transparent','Treacherous','Tremendous','Ubiquitous','Unadorned','Undermine','Underscore','Undulate','Unilateral','Unjust','Unmitigated','Unprecedented','Unveil','Urge','Validate','Viability','Vital','Vow','Warrant','Yield']
@@ -150,7 +149,7 @@ function displayShuffledArray(array){
     display.innerText = peasantQuest[storyTracker]["array"][i];
     word = peasantQuest[storyTracker]["array"][i];
     i++
-    console.log(array)
+
 }
 
 //first story displayed
@@ -193,19 +192,16 @@ function storyMode(){
                 word = peasantQuest[storyTracker]["array"][i];
                 i++
 
-                console.log(i + "second")
-
-                console.log(word + "second")
 
                 displayMessage();
 
                 enterPress = enterPress+1
-                console.log("enter times:" + enterPress)
+
                 document.getElementById("inputbox").value = ""
 
                 if (enterPress%3 === 0 && storyTracker < 11){
                 storyTracker++
-                console.log("story tracker:" + storyTracker)
+
                 i = 0
                 shuffle(peasantQuest[storyTracker]["array"])
                 }
@@ -350,7 +346,7 @@ function countDown(){
     setInterval(function(){
                     document.getElementById("seconds").innerText = timer;
                     timer--
-                    if (timer<=5){
+                    if (timer<5){
                     document.getElementById("seconds").style.color = "red"
                     }
 
