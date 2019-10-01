@@ -85,7 +85,7 @@ var peasantQuest = [
         message: `Before too long, you find yourself approaching an immense moat.
     In the moat, there is a boat afloat.
     On the boat, there is a goat.
-    "Baaaa!"says the goat. "How many other words that rhyme with 'moat' can you name?"`,
+    "Baaaa!"says the goat. "Can you name three other words that rhyme with 'moat'?"`,
 
         array: ["bloat", "coat", "gloat", "haute", "mote", "note", "oat", "quote", "rote", "wrote", "smote", "stoat", "throat", "tote", "vote", "float", "demote", "connote", "devote", "denote", "emote", "garrote", "misquote", "outvote", "promote", "remote", "rewrote"]
     },

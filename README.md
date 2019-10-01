@@ -26,9 +26,6 @@ Functionally, I started building the basic requirements for Speed Mode -  random
 - Working with set interval and dropdown menu selection.
 
 ## Unsolved Problems
-Fixing the layout for different screen sizes.
 Identifying a rhyming word in the array.
-Having a typewriting animation for the welcome message through DOM.
-I would have liked to add a third mode (e.g. Adventure Mode) that is more interactive.
 
-
+ 
