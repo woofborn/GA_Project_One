@@ -270,11 +270,11 @@ function checkMatchStory(){
 ////////////////////////SPEED MODE////////////////////
 var enterPressSpeed = 0
 //initiate timer for speed mode
-function initiateCount(){
-     if (enterPressSpeed === 1){
-        countDown();
-     }
-}
+// function initiateCount(){
+//      if (enterPressSpeed === 1){
+//         countDown();
+//      }
+// }
 
 //this function randomly selects word and displays the random word - for speed mode
 function displayWord(array){
@@ -310,7 +310,9 @@ function speedMode(){
             if (event.key === "Enter"){
 
             enterPressSpeed ++
-            initiateCount();
+            if (enterPressSpeed === 1){
+                countDown();
+            }
             checkMatchSpeed();
 
             var arrayWords = giantArray.map(v => v.toLowerCase());
@@ -345,11 +347,11 @@ function countDown(){
     var interval =
     setInterval(function(){
                     document.getElementById("seconds").innerText = timer;
-                    timer--
-                    if (timer<5){
+                    console.log(timer)
+                    if (timer<=5){
                     document.getElementById("seconds").style.color = "red"
                     }
-
+                    timer--
                     if (timer === 0){
                         clearInterval(interval)
                         setTimeout(gameOverSpeed,1000)
