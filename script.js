@@ -351,12 +351,12 @@ function countDown(){
                     if (timer<=5){
                     document.getElementById("seconds").style.color = "red"
                     }
-                    timer--
+
                     if (timer === 0){
                         clearInterval(interval)
                         setTimeout(gameOverSpeed,1000)
                         }
-                     ;
+                    timer--
                     },1000);
 }
 
