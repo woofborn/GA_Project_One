@@ -16,7 +16,7 @@
 
 
 
-    <div id = "maincontainer">
+    <div id = "maincontainer" >
 
         <div>
             <img id="cat" src = "images/unicorn.gif">
@@ -28,28 +28,30 @@
 
         </div>
 
-        <div class = "col-12 d-flex justify-content-around">
-           <div class = "col-3 d-flex justify-content-center" id = "timer">
-                <p class = "col-3" id = "timer-word">Timer:</p>
-                <p class = "col-9" id = "seconds">
-                    <select id = "timer-input">
-                        <option>Select time...</option>
-                        <option value = "10">10 seconds</option>
-                        <option value = "20">20 seconds</option>
-                        <option value = "30">30 seconds</option>
-                        <option value = "45">45 seconds</option>
-                        <option value = "60">60 seconds</option>
-                    </select>
-                </p>
-            </div>
+        <div class = "col-12 d-flex justify-content-center">
+            <div class = "col-9 d-flex justify-content-center">
+               <div class = "col-4 d-flex justify-content-between" id = "timer">
+                    <p class = "col-3" id = "timer-word">Timer:</p>
+                    <p class = "col-9" id = "seconds">
+                        <select id = "timer-input">
+                            <option>Select...</option>
+                            <option value = "10">10 seconds</option>
+                            <option value = "20">20 seconds</option>
+                            <option value = "30">30 seconds</option>
+                            <option value = "45">45 seconds</option>
+                            <option value = "60">60 seconds</option>
+                        </select>
+                    </p>
+                </div>
 
-           <div class = "col-3 d-flex justify-content-around" id = "score">
-                <p class = "col-6" id = "score-word">Score:</p>
-                <p class = "col-6" id= "number"></p>
+               <div class = "col-4 d-flex justify-content-around" id = "score">
+                    <p class = "col-6" id = "score-word">Score:</p>
+                    <p class = "col-6" id= "number"></p>
+                </div>
             </div>
         </div>
 
-        <div id="message" class = "col-10 d-flex justify-content-center">
+        <div id="message" class = "col-6 d-flex justify-content-center">
 
         </div>
 

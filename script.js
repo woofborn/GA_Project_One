@@ -21,27 +21,33 @@ function homeScreen(){
 //creates image background
     var backgroundDiv = document.createElement("div")
     backgroundDiv.style.backgroundImage = `url("images/greywall.jpg")`
-
-    backgroundDiv.setAttribute("class", "col-12 d-flex justify-content-center")
+    backgroundDiv.setAttribute("class", "row col-12 d-flex justify-content-center")
     backgroundDiv.style.height = "100vh"
     home.appendChild(backgroundDiv)
 //creates welcome message
+    var messageDiv = document.createElement("div")
     var messageSpan = document.createElement("span")
+    messageDiv.setAttribute("class", "col-12 d-flex justify-content-center")
     messageSpan.setAttribute("id", "homemessage")
-    messageSpan.setAttribute("class", "col-12 d-flex justify-content-center")
-    messageSpan.style.lineHeight = "200px";
+
+    messageSpan.style.marginTop = "20vh"
     messageSpan.innerHTML = `<p>Welcome to <a href = "instructions.html"> TypeQuest</a>!</p>`
-    backgroundDiv.appendChild(messageSpan)
+    messageSpan.style.fontSize = "100px"
+    messageDiv.appendChild(messageSpan)
+    backgroundDiv.appendChild(messageDiv)
 
 //creates button div
     var buttonDiv = document.createElement("div")
-    buttonDiv.setAttribute("class", "col-8 d-flex justify-content-center")
-    messageSpan.appendChild(buttonDiv)
+    buttonDiv.setAttribute("class", "row col-8 d-flex justify-content-between")
+    buttonDiv.style.marginBottom = "20vh"
+    backgroundDiv.appendChild(buttonDiv)
 //creates Story button
     var buttonOne = document.createElement("button");
     buttonOne.innerText = "Story Mode"
-    buttonOne.setAttribute("class", "col-6 btn btn-outline-dark btn-lg")
+    buttonOne.setAttribute("class", "col-4 btn btn-outline-dark btn-lg")
     buttonOne.setAttribute("id", "button-one")
+    buttonOne.style.fontSize = "30px"
+    buttonOne.style.fontWeight = "700"
     buttonDiv.appendChild(buttonOne)
     document.getElementById("button-one").addEventListener("click", function(){
     document.getElementById("maincontainer").style.display = "initial"
@@ -51,8 +57,10 @@ function homeScreen(){
 //creates Speed button
     var buttonTwo = document.createElement("button");
     buttonTwo.innerText = "Speed Mode"
-    buttonTwo.setAttribute("class", "col-6 btn btn-outline-dark btn-lg")
+    buttonTwo.setAttribute("class", "col-4 btn btn-outline-dark btn-lg")
     buttonTwo.setAttribute("id", "button-two")
+    buttonTwo.style.fontSize = "30px"
+    buttonTwo.style.fontWeight = "700"
     buttonDiv.appendChild(buttonTwo)
     document.getElementById("button-two").addEventListener("click", function(){
     document.getElementById("maincontainer").style.display = "initial"
@@ -168,6 +176,7 @@ function storyMode(){
     displayShuffledArray();
 
     document.getElementById("timer").style.visibility = "hidden"
+    document.getElementById("score").setAttribute("class", "col-2 d-flex justify-content-around")
 
     var audioTheme = document.createElement("audio")
     audioTheme.setAttribute("id", "storyTheme")
@@ -324,13 +333,14 @@ function checkMatchSpeed(){
            document.getElementById("number").innerText = score
            document.getElementById("checkmark").setAttribute("src", "images/checkmark.png")
            moveCat();
-           // moveBar();
+
 
     } else if (input !== word && enterPressSpeed !== 1) {
 
        document.getElementById("checkmark").setAttribute("src", "images/crossout.png")
        score--
        document.getElementById("number").innerText = score
+       moveCat();
 
     }
 }
@@ -340,10 +350,14 @@ function countDown(){
 
     var interval =
     setInterval(function(){
-                    document.getElementById("seconds").innerText = timer;
+                    document.getElementById("seconds").innerText = `${timer} seconds`;
 
                     if (timer<=5){
                     document.getElementById("seconds").style.color = "red"
+                    }
+
+                    if (timer ===1){
+                        document.getElementById("seconds").innerText = `${timer} second`;
                     }
 
                     if (timer === 0){
