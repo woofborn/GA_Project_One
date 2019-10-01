@@ -2,20 +2,17 @@ body {
 width:100%;
 height: 100vh;
 background-color: grey;
-
 }
 
 #maincontainer {
 	display:none;
-
-	margin: 10px auto;
 	position: relative;
-	top: 150px;
+	top: 100px;
 }
 
 #timer, #score {
 	border: 1px solid black;
-	margin: 0 auto;
+	margin: 0
 }
 
 #cat {
@@ -77,7 +74,7 @@ background-color: grey;
 
 #timer-word, #score-word {
 	text-align: left;
-	padding: 0px;
+	padding-left: 2px;
 	margin: 0 auto;
 }
 

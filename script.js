@@ -176,7 +176,8 @@ function storyMode(){
     displayShuffledArray();
 
     document.getElementById("timer").style.visibility = "hidden"
-    document.getElementById("score").setAttribute("class", "col-2 d-flex justify-content-around")
+    document.getElementById("score").setAttribute("class", "col-2 d-flex justify-content-start")
+
 
     var audioTheme = document.createElement("audio")
     audioTheme.setAttribute("id", "storyTheme")
@@ -270,6 +271,8 @@ function checkMatchStory(){
            lifeBar.removeChild(life)
            lives--
         } else if (lives === 0) {
+            var audioTheme = document.getElementById("storyTheme")
+            audioTheme.pause()
             gameEndScreen()
         }
     }
@@ -296,8 +299,10 @@ function speedMode(){
     audioTheme.play()
 
     document.getElementById("cat").style.visibility = "visible"
-
     document.getElementById("lives").style.visibility = "hidden"
+    document.getElementById("message").style.visibility = "hidden"
+    document.getElementById("score").style.margin = "0 auto"
+    document.getElementById("timer").style.margin = "0 auto"
 
     var timerInput = document.getElementById("timer-input");
     timerInput.onchange = function(){
