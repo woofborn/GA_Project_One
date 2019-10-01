@@ -9,7 +9,7 @@ var enterPress = 0;
 var timer = 10;
 var storyTracker = 0;
 var giantArray = ['Abate','Abstract','Abysmal','Accordingly','Acquisition','Adapt','Adept','Adequate','Advent','Adversarial','Advocate','Aesthetic','Afford','Agitate','Allow','Allude','Altercation','Ambiguous','Ambitious','Ambivalence','Analogous','Annihilate','Anomaly','Anticipate','Antipathy','Apex','Apprehension','Articulate','Artificial','Assertion','Austere','Authenticity','Avenue','Avid','Basic','Bear','Benevolent','Bias','Bittersweet','Bolster','Boost','Brawl','Brevity','Candid','Candor','Capitalize','Capture','Civic','Clinical','Clout','Coarse','Coincide','Commission','Comparable','Competent','Complacent','Complement','Concede','Conceive','Condone','Conducive','Conduct','Confide','Confine','Consensus','Constitute','Contemplate','Contend','Contradict','Controversial','Conventional','Convey','Conviction','Corroborate','Counteract','Counterargument','Counterproductive','Culmination','Cultivate','Decree','Deference','Deficient','Demonstrate','Demur','Deplete','Desolate','Devise','Dilemma','Diligence','Diminish','Dire','Discord','Disdain','Dismay','Disparage','Dispatch','Diversification','Doctrine','Dominion','Dreary','Dubious','Eccentric','Egregious','Eloquent','Eminent','Emit','Emphatic','Empirical','Endow','Endure','Entail','Entrenched','Enumerate','Envy','Erratic','Establish','Evoke','Exacerbate','Excel','Exert','Exhilarating','Expend','Exploit','Facilitate','Feasibility','Ferocity','Fiscal','Flourish','Fluctuate','Foment','Foreseeable','Frankly','Freewheeling','Fundamental','Galvanizing','Geriatric','Hostile','Hypothetical','Ignominious','Impart','Impartiality','Imposing','Imposition','Imprudent','Incite','Indifference','Indiscriminately','Indulge','Infer','Innovative','Insatiable','Inversion','Invoke','Irreconcilable','Lament','Locomotion','Lucrative','Malicious','Malleable','Materialistic','Melodramatic','Modest','Modify','Momentous','Novel','Nuance','Null','Objectivity','Obsolete','Omnipotent','Onset','Opine','Ornate','Oust','Paramount','Peculiar','Perish','Persecute','Petulant','Pinnacle','Pitiable','Plausible','Postulate','Potent','Pragmatic','Precedent','Predecessor','Prescribe','Principle','Prohibit','Prompt','Promulgate','Prosecute','Provocative','Qualitative','Quantitative','Quirk','Ramify','Rash','Raw','Readily','Reconsideration','Reform','Refute','Reinforce','Reluctantly','Renounce','Reproach','Repudiate','Retention','Satiated','Savvy','Scandalous','Scorn','Scrupulous','Scrutinize','Secrete','Sentiment','Sheer','Simple','Sinister','Solidarity','Sparingly','Spawn','Spur','Squalid','Stark','Static','Subordinate','Subsequently','Substantial','Substantiate','Subtle','Sufficient','Surly','Surmount','Susceptible','Tactful','Taut','Teeming','Temperament','Tentative','Transparent','Treacherous','Tremendous','Ubiquitous','Unadorned','Undermine','Underscore','Undulate','Unilateral','Unjust','Unmitigated','Unprecedented','Unveil','Urge','Validate','Viability','Vital','Vow','Warrant','Yield']
-
+//instead of concat array of story mode words, went with random vocab words from the internet for better user experience
 
 window.addEventListener("load", homeScreen)
 
@@ -33,7 +33,6 @@ function homeScreen(){
     messageSpan.style.lineHeight = "200px";
     messageSpan.innerHTML = `<p>Welcome to <a href = "instructions.html"> TypeQuest</a>!</p>`
     backgroundDiv.appendChild(messageSpan)
-    // typeWriter()
 
 //creates button div
     var buttonDiv = document.createElement("div")
@@ -64,8 +63,7 @@ function homeScreen(){
 }
 
 function gameEndScreen(){
-document.getElementById("maincontainer").style.display = "none"
-
+    document.getElementById("maincontainer").style.display = "none"
 //creates main containing div
     var body = document.querySelector("body")
     var end = document.createElement("div")
@@ -76,30 +74,26 @@ document.getElementById("maincontainer").style.display = "none"
     backgroundDiv.setAttribute("class", "col-12 d-flex justify-content-center")
     backgroundDiv.style.height = "100vh"
     end.appendChild(backgroundDiv)
+
     if (youWin === false){
         backgroundDiv.style.backgroundColor = "black"
         var audioTheme = document.createElement("audio")
-        audioTheme.setAttribute("id", "lose")
         document.getElementById("maincontainer").appendChild(audioTheme)
         var sadTheme = document.createElement("source")
         sadTheme.setAttribute("src", "sadtrombone.mp3")
         audioTheme.appendChild(sadTheme)
-        var storyTheme = document.getElementById("storyTheme")
-        storyTheme.pause()
         audioTheme.play()
     } else {
+        document.querySelector("body").style.backgroundImage = `url("images/fire.jpg")`
+        document.querySelector("body").style.backgroundSize = "cover"
 
-         document.querySelector("body").style.backgroundImage = `url("images/fire.jpg")`
-         document.querySelector("body").style.backgroundSize = "cover"
-         var audioTheme = document.createElement("audio")
+        var audioTheme = document.createElement("audio")
         audioTheme.setAttribute("id", "victory")
-
         document.getElementById("maincontainer").appendChild(audioTheme)
         var theme = document.createElement("source")
         theme.setAttribute("src", "victory.mp3")
         audioTheme.appendChild(theme)
         audioTheme.play()
-
     }
 //creates game ended message
     var messageSpan = document.createElement("span")
@@ -139,19 +133,6 @@ document.getElementById("maincontainer").style.display = "none"
     document.getElementById("button-no").addEventListener("click", function(){
     window.location = "http://www.nyan.cat/"
     })
-}
-
-var k = 0
-function typeWriter(){
-
-     var welcomeText = "Welcome to TypeQuest!"
-
-     while (k < welcomeText.length){
-        document.getElementById("homemessage").innerText += welcomeText.charAt(k);
-        k++
-        var interval = setTimeout(typeWriter, 50)
-
-     }
 }
 
 //FOR STORY MODE
@@ -304,14 +285,6 @@ function displayWord(array){
     display.innerText = word;
 }
 
-// function timerLength(){
-//     document.getElementById("timer-input").addEventListener("keypress", function(){
-//         if (event.key === "Enter"){
-//             timer = event.target.value
-//         }
-//     })
-// }
-
 function speedMode(){
     var audioTheme = document.createElement("audio")
     audioTheme.setAttribute("id", "speedTheme")
@@ -332,7 +305,6 @@ function speedMode(){
         timer = timerInput.value;
     }
 
-
     document.querySelector("body").style.backgroundImage = `url("images/clocks.jpg")`
     document.querySelector("body").style.backgroundSize = "cover"
     document.getElementById("input")
@@ -349,8 +321,6 @@ function speedMode(){
             displayWord(arrayWords);
 
             document.getElementById("inputbox").value = ""
-
-
             }
         })
 }
@@ -365,12 +335,10 @@ function checkMatchSpeed(){
            // moveBar();
 
     } else if (input !== word && enterPressSpeed !== 1) {
-       lives--
+
        document.getElementById("checkmark").setAttribute("src", "images/crossout.png")
     }
-
 }
-
 
 //this is the countdown timer function
 function countDown(){
@@ -396,7 +364,6 @@ function gameOverSpeed(){
         gameEndScreen()
         var audioTheme = document.getElementById("speedTheme")
         audioTheme.pause()
-
     }
 }
 
