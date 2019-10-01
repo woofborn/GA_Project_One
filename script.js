@@ -298,8 +298,6 @@ function speedMode(){
 
     document.getElementById("lives").style.visibility = "hidden"
 
-    // concatArray();
-
     var timerInput = document.getElementById("timer-input");
     timerInput.onchange = function(){
         timer = timerInput.value;
@@ -337,6 +335,9 @@ function checkMatchSpeed(){
     } else if (input !== word && enterPressSpeed !== 1) {
 
        document.getElementById("checkmark").setAttribute("src", "images/crossout.png")
+       score--
+       document.getElementById("number").innerText = score
+
     }
 }
 
