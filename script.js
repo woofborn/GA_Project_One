@@ -269,12 +269,6 @@ function checkMatchStory(){
 
 ////////////////////////SPEED MODE////////////////////
 var enterPressSpeed = 0
-//initiate timer for speed mode
-// function initiateCount(){
-//      if (enterPressSpeed === 1){
-//         countDown();
-//      }
-// }
 
 //this function randomly selects word and displays the random word - for speed mode
 function displayWord(array){
@@ -347,18 +341,18 @@ function countDown(){
     var interval =
     setInterval(function(){
                     document.getElementById("seconds").innerText = timer;
-                    console.log(timer)
-                    timer--
-                    if (timer<5){
+
+                    if (timer<=5){
                     document.getElementById("seconds").style.color = "red"
                     }
 
                     if (timer === 0){
                         clearInterval(interval)
-                        setTimeout(gameOverSpeed,1000)
-                        }
-
+                        gameOverSpeed()
+                    }
+                    timer--
                     },1000);
+
 }
 
 function gameOverSpeed(){
