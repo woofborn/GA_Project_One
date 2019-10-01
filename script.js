@@ -177,7 +177,9 @@ function storyMode(){
     theme.setAttribute("src", "terra-theme.mp3")
     audioTheme.appendChild(theme)
 
+    audioTheme.loop = true;
     audioTheme.play();
+
 
     document.getElementById("input")
         .addEventListener("keypress", function(){
