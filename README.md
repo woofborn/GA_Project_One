@@ -18,7 +18,7 @@ HTML, CSS and Javascript.
 ## Approach Taken
 I first started building the basic layout of the interface in HTML/CSS - timer, scoreboard, word prompt and user input to get a rough idea how most of the game would look.
 
-Functionally, I started building the basic requirements for Speed Mode -  random selection of a prompt word from an array, matching user input with the prompted word, keeping score and running down a timer. From there, I built the narrative and related arrays for Story Mode. I then populated the Speed Mode array with the Story Mode arrays, and a few other bonus words for fun (e.g. antidisestablishmentarianism).
+Functionally, I started building the basic requirements for Speed Mode -  random selection of a prompt word from an array, matching user input with the prompted word, keeping score and running down a timer. From there, I built the narrative and related arrays for Story Mode. Originally, I populated the Speed Mode array by concatenating the Story Mode arrays; however, I discovered some of the arrays were too tedious for typing at speed, so I turned a vocabulary list into an array instead. 
 
 ## Key Motivations
 - Getting more comfortable with DOM manipulation and visualising layouts through JS (e.g. the home page and win/lose pages were made in JS).
